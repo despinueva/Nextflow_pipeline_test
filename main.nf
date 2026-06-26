@@ -35,7 +35,6 @@ process combine_samples {
         """
         cat *.fasta > "combined.fasta"
         """
-
 }
 
 process align {

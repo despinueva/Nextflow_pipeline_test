@@ -30,10 +30,10 @@ process combine_samples {
         path reference
         path samples
     output:
-        path "${params.in}.combined.fasta"
+        path "combined.fasta"
     script:
         """
-        cat *.* > "${params.in}.combined.fasta"
+        cat *.* > "combined.fasta"
         """
 
 }

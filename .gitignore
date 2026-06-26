@@ -1,0 +1,7 @@
+.nextflow.log*
+.nextflow/
+hepatitis/
+.envs/
+out/
+work/
+.DS_Store

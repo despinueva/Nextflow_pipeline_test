@@ -6,3 +6,5 @@ out/
 work/
 .DS_Store
 test_parent/
+out_test/
+out_test_2/

@@ -33,7 +33,7 @@ process combine_samples {
         path "combined.fasta"
     script:
         """
-        cat $reference $samples > "combined.fasta"
+        cat *.fasta > "combined.fasta"
         """
 
 }

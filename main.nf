@@ -23,7 +23,7 @@ process fetch_reference {
 }
 
 process combine_samples {
-    publishDir "$params.out/combined_samples"
+    publishDir "${params.out}/combined_samples"
 
     errorStrategy 'terminate'
 

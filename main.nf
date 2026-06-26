@@ -7,11 +7,10 @@ params {
 }
 
 process fetch_reference {
-    publishDir "$params.out/reference"
+    publishDir "${params.out}/reference"
 
     conda "bioconda::entrez-direct=24.0"
-    container "https://depot.galaxyproject.org/singularity/entrez-direct:24.0--he881be0_0"
-
+    
     input:
         val accession
     output:
@@ -34,10 +33,6 @@ process combine_samples {
         path "${params.in}.combined.fasta"
     script:
         """
-        if [ "${params.in}" == null ]; then
-	        echo "ERROR: please provide a directory path using the --in parameter"
-	        exit 1
-        fi 
         cat *.* > "${params.in}.combined.fasta"
         """
 
@@ -77,7 +72,7 @@ process clean_up {
 
 workflow {
     def ch_ref = fetch_reference(params.accession)
-    def ch_samples = channel.fromPath("$params.in/*.{fasta,fa,fas,fna}").collect()
+    def ch_samples = channel.fromPath("${params.in}/*.fasta").collect()
     def ch_combine = combine_samples(ch_ref, ch_samples)
     def ch_align = align(ch_combine)
     def ch_clean = clean_up(ch_align)
